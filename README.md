@@ -1,46 +1,51 @@
-Optimiseur de Budgets
+# Optimiseur de Budgets Municipaux (Solveur MKP)
 
-Ce projet est une application Java en ligne de commande conçue pour résoudre le Problème du Sac à Dos Multidimensionnel dans le but d'optimiser la sélection de projets municipaux d'une ville, en respectant plusieurs enveloppes budgétaires tels que économique, social, environnemental, ou par secteurs d'activité .
+**Optimiseur de Budgets** est une application Java conçue pour résoudre le **Problème du Sac à Dos Multidimensionnel (MKP)**. Cet outil permet d'optimiser la sélection de projets municipaux en respectant plusieurs enveloppes budgétaires (économique, social, environnemental, etc.).
 
+## Description du Projet
 
--Fonctionnalités
+L'application aide à la prise de décision complexe : choisir la meilleure combinaison de projets pour maximiser l'utilité globale tout en respectant des contraintes budgétaires transversales ou sectorielles.
 
-Génération de données : Simulation de projets municipaux aléatoires avec différentes contraintes (3 budgets transversaux ou 5 budgets sectoriels).
+## Fonctionnalités
 
-Analyseur de fichiers : Capacité à lire et traiter des fichiers de données au format académique standard (OR-Library).
+* **Génération de données :** Simulation de projets municipaux avec 3 budgets transversaux ou 5 budgets sectoriels.
+* **Analyseur de fichiers :** Lecture et traitement de fichiers au format académique standard (**OR-Library**).
+* **Interface Interactive :** Menu dans le terminal pour configurer les données et choisir les algorithmes.
 
-Interface Interactive : Menu dans le terminal permettant à l'utilisateur de choisir ses données et l'algorithme à exécuter.
+## Algorithmes Implémentés
 
+Le solveur intègre plusieurs stratégies de résolution :
+* **Heuristiques Gloutonnes :** Méthodes par Ajout (partir de vide) ou par Retrait (partir du plein).
+* **Recherche Locale (Hill Climbing) :** Versions Classique, Aléatoire (Stochastic) et **Multi-Start** (itératif) pour éviter les optima locaux.
 
--Algorithmes Implémentés
+## Format de Fichier Supporté
 
-Le solveur embarque plusieurs heuristiques et métaheuristiques pour trouver la meilleure combinaison d'objets :
+L'application accepte les fichiers `.dat` structurés comme suit :
+1. Nombre d'objets (`n`)
+2. Nombre de dimensions (`k`)
+3. Valeur optimale (ignorée)
+4. Liste des utilités, Matrice des coûts, et Capacités budgétaires.
 
-1. Algorithmes Gloutons
-Glouton par Ajout : Construit la solution en partant d'un sac vide et ajoute les objets les plus rentables, selon un ratio Utilité/Coût, jusqu'à saturation des capacités.
+## Installation et Utilisation
 
-Glouton par Retrait : Part d'un sac contenant tous les objets disponibles, et retire les objets les plus contraignants jusqu'à ce que la solution devienne valide.
+### Prérequis
+* Avoir installé le **JDK Java** (version 8 ou supérieure).
 
-2. Algorithmes de Recherche Locale (Hill Climbing)
-Hill Climbing Classique : Explore le voisinage complet de la solution actuelle et se déplace toujours vers le meilleur voisin disponible. S'arrête lorsqu'il atteint un optimum local.
+### Installation
+Clonez le dépôt sur votre machine locale :
+```bash
+git clone [https://github.com/XieDanvy/Optimisation_Projets_Municipaux.git](https://github.com/XieDanvy/Optimisation_Projets_Municipaux.git)
+cd Optimisation_Projets_Municipaux
+```
+Compiler les fichiers sources :
+```bash
+javac src/*.java -d bin
+```
+Lancez le programme principal :
+```bash
+java -cp bin Principal
+```
 
-Hill Climbing Aléatoire (Stochastic) : Explore des voisins générés aléatoirement (ajout, retrait, échange). Permet une exploration moins prévisible et évite certains calculs lourds.
+## Installation et Utilisation
 
-Multi-Start Hill Climbing (Itératif) : L'approche la plus avancée. Lance plusieurs recherches locales à partir de points de départ stratégiquement différents (sac vide, solution gloutonne, solution aléatoire) pour maximiser les chances de trouver l'optimum global.
-
-
--Format de Fichier Supporté
-
-L'application peut lire des instances externes, comme les fichiers .dat. Le fichier texte doit suivre la structure standard suivante :
-
-Nombre d'objets (n)
-
-Nombre de dimensions/budgets (k)
-
-Valeur optimale connue (ignorée par le programme)
-
-Liste des n utilités (bénéfices)
-
-Matrice des coûts dimension par dimension (Ligne 1 = tous les coûts pour le budget 1, etc.)
-
-Liste des k budgets maximaux (capacités)
+Projet développé par Xie Danvy.
