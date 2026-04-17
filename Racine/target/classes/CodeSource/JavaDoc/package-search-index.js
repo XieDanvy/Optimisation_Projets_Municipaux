@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Equipe"},{"l":"GloutonSolver"},{"l":"HillClimbing"},{"l":"SacADos"},{"l":"VersSacADos"}];updateSearchResults();
